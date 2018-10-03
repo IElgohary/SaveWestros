@@ -27,7 +27,7 @@ public class SaveWestros extends Problem{
 
 	private void initializeOperators() {
 		operators = new ArrayList<Operator>();
-		
+		// TODO Create Operators
 		
 	}
 
