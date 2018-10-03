@@ -1,6 +1,7 @@
 package saveWestros;
 import java.util.ArrayList;
 
+import genericSearch.Operator;
 import genericSearch.Problem;
 import genericSearch.State;
 
@@ -8,7 +9,9 @@ public class SaveWestros extends Problem{
 	public int n,m;
 	public char[][] grid;
 	
-	public static final char WHITE_WALKER = 'w', EMPTY_CELL = '.', OBSTACLE = 'o', JON_SNOW = 'j';
+	public static final char WHITE_WALKER = 'w', EMPTY_CELL = '.',
+			OBSTACLE = 'o', JON_SNOW = 'j', DRAGONGLASS = 'd',
+			JON_ON_DRAGONGLASS = '@';
 			
 	
 
@@ -23,7 +26,8 @@ public class SaveWestros extends Problem{
 
 
 	private void initializeOperators() {
-		// TODO Auto-generated method stub
+		operators = new ArrayList<Operator>();
+		
 		
 	}
 
