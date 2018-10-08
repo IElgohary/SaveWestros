@@ -7,6 +7,7 @@ public class JonOperator extends Operator{
 	
 	public int dx, dy;
 	boolean attack, pick;
+	final int maxDragonGlass = 1;
 	
 	/*
 	 * @param name name of the action
@@ -46,12 +47,13 @@ public class JonOperator extends Operator{
 		}
 //		If Action is Picking DragonGlass, Validate that cell has DragonGlass
 		if(pick) {
-			if(grid[newX][newY] != SaveWestros.JON_ON_DRAGONGLASS) return null;
+			if(grid[newX][newY] != SaveWestros.JON_ON_DRAGONGLASS || dragonGlass == maxDragonGlass) return null;
+			dragonGlass = maxDragonGlass;
 		}
 //		If move is valid, construct new state
-		newState(state, newX, newY, dragonGlass);
-//		TODO Create node for this state;
-		return null;
+		WestrosState newState = newState(state, newX, newY, dragonGlass);
+		
+		return new Node(newState, node, this);
 	}
 	
 	/*
@@ -78,6 +80,8 @@ public class JonOperator extends Operator{
 					if(attack && attackedWalker(newX,newY, i, j)) {
 						newGrid[i][j] = SaveWestros.EMPTY_CELL;
 						whiteWalkersLeft--;
+					}else {
+						newGrid[i][j] = grid[i][j];
 					}
 				} else if(oldCell.x == i && oldCell.y == j) {
 					if(grid[i][j] == SaveWestros.JON_SNOW)

@@ -7,7 +7,7 @@ public class Node{
 	public int depth;
 	public int pathCost;
 	
-	public Node(State initialState, Node parent, Operator operator) {
+	public Node(State state, Node parent, Operator operator) {
 		this.state = state;
 		this.parent = parent;
 		this.operator = operator;
