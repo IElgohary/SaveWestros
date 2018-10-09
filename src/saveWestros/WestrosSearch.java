@@ -13,7 +13,7 @@ public class WestrosSearch extends Search{
 		System.out.println("Enter Height:");
 		int m = sc.nextInt();
 		
-		SaveWestros problem = new SaveWestros(n,m);
+		SaveWestros problem = new SaveWestros(4,4);
 //		TODO: Start searching
 		
 	}

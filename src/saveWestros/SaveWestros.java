@@ -32,8 +32,8 @@ public class SaveWestros extends Problem{
 		String[] operatorName = {"North", "South", "East", "West"};
 		for(int i = 0; i < 4; i++)
 			operators.add(new JonOperator(operatorName[i], 1, dx[i], dy[i], false, false));
-		operators.add(new JonOperator("Attack", 1, 0, 0, true, false));
-		operators.add(new JonOperator("Pick", 2, 0, 0, false, true));
+		operators.add(new JonOperator("Attack", n * m + 1, 0, 0, true, false));
+		operators.add(new JonOperator("Pick", 1, 0, 0, false, true));
 		
 	}
 
