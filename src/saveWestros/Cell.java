@@ -1,5 +1,6 @@
 package saveWestros;
 
+// Defines the location of Jon
 public class Cell {
 	public int x,y;
 	

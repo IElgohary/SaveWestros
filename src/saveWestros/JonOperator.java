@@ -9,7 +9,7 @@ public class JonOperator extends Operator{
 	boolean attack, pick;
 	final int maxDragonGlass = 1;
 	
-	/*
+	/**
 	 * @param name name of the action
 	 * @param cost cost of the action
 	 * @param dx,dy The change in location that this action does
@@ -24,7 +24,7 @@ public class JonOperator extends Operator{
 		this.pick = pick;
 	}
 
-	/*
+	/**
 	 * @param node the node to apply the action to
 	 * @return Node node after applying the action
 	 */
@@ -56,7 +56,7 @@ public class JonOperator extends Operator{
 		return new Node(newState, node, this);
 	}
 	
-	/*
+	/**
 	 * @param state the old state before the action is applied
 	 * @param newX,newY The coordinates of the new Location
 	 * @param dragonGlass the number of dragon glass Jon has in the new state
@@ -96,7 +96,7 @@ public class JonOperator extends Operator{
 		return new WestrosState(newCell, dragonGlass, whiteWalkersLeft, newGrid);
 	}
 
-	/*
+	/**
 	 * @param x,y The coordinates of Jon Snow
 	 * @param i,j the coordinates of the Walker
 	 * @return boolean whether the walker was attacked by Jon 
@@ -106,7 +106,7 @@ public class JonOperator extends Operator{
 		return false;
 	}
 
-	/*
+	/**
 	 * @param grid The grid of the source state
 	 * @param x,y The coordinates of the new Location
 	 * @return boolean whether there are walkers around the new location
@@ -120,7 +120,7 @@ public class JonOperator extends Operator{
 		return walkers;
 	}
 
-	/*
+	/**
 	 * @param grid The grid of the source state
 	 * @param x,y The coordinates of the new Location
 	 * @return boolean whether the cell is a valid move

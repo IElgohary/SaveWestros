@@ -24,21 +24,27 @@ public class SaveWestros extends Problem{
 	}
 
 
-
+	/**
+	 * Initialize the operators of the problem
+	 */
 	private void initializeOperators() {
 		operators = new ArrayList<Operator>();
 		int[] dx = {-1, 0, 1, 0};
 		int[] dy = {0, 1, 0, -1};
 		String[] operatorName = {"North", "South", "East", "West"};
+//		Operators of movement
 		for(int i = 0; i < 4; i++)
 			operators.add(new JonOperator(operatorName[i], 1, dx[i], dy[i], false, false));
+//		Cost of attack is the highest to minimize the number of dragon glass pieces used
 		operators.add(new JonOperator("Attack", n * m + 1, 0, 0, true, false));
 		operators.add(new JonOperator("Pick", 1, 0, 0, false, true));
 		
 	}
 
 
-
+	/**
+	 * Generate a grid for the problem with dimensions n * m
+	 */
 	private void generateGrid() {
 //		TODO: random grid
 //		grid = new char[4][4];
@@ -52,7 +58,12 @@ public class SaveWestros extends Problem{
 	}
 
 
-
+	/**
+	 * The goal node is the node in which no white walkers are left
+	 * 
+	 * @param state the state to test whether it's a goal or not
+	 * @return a boolean indicating whether or not the state is the goal
+	 */
 	@Override
 	public boolean goal(State state) {
 		WestrosState westrosState = (WestrosState) state;

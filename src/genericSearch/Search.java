@@ -14,6 +14,7 @@ public class Search {
 		return resultNodes;
 	}
 	
+//	Generic search algorithm
 	public static Node search(Problem problem, SearchQueue queue) {
 		queue.initializeQueue(new Node(problem.initialState, null, null));
 		
