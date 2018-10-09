@@ -6,7 +6,12 @@ import genericSearch.Node;
 
 // a class for the base queueing algorithm 
 public abstract class SearchQueue {
-
+	
+	/**
+	 * Initialize the queue with a single node
+	 * 
+	 * @param node initial node to add in the queue
+	 */
 	public void initializeQueue(Node node) {
 		ArrayList<Node> nodes = new ArrayList<Node>();
 		nodes.add(node);
