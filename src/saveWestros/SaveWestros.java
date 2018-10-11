@@ -29,8 +29,8 @@ public class SaveWestros extends Problem{
 	 */
 	private void initializeOperators() {
 		operators = new ArrayList<Operator>();
-		int[] dx = {-1, 0, 1, 0};
-		int[] dy = {0, 1, 0, -1};
+		int[] dx = {-1, 1, 0, 0};
+		int[] dy = {0, 0, 1, -1};
 		String[] operatorName = {"North", "South", "East", "West"};
 //		Operators of movement
 		for(int i = 0; i < 4; i++)
@@ -52,7 +52,7 @@ public class SaveWestros extends Problem{
 			{{'.','.','w','.'},
 			{'d','.','.','w'},
 	        {'.','o','.','o'},
-	        	{'w','.','.','j'}};
+	        {'w','.','.','j'}};
 		this.grid = newGrid;
 		this.initialState = new WestrosState(new Cell(3,3), 0, 3, newGrid);
 	}

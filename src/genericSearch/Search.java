@@ -9,7 +9,11 @@ public class Search {
 	private static ArrayList<Node> expand(Node currentNode, ArrayList<Operator> operators){
 		ArrayList<Node> resultNodes = new ArrayList<Node>();
 		for (Operator operator: operators) {
-			resultNodes.add(operator.run(currentNode));
+			
+			Node resNode  = operator.run(currentNode);
+			
+			if(resNode != null)
+				resultNodes.add(resNode);
 		}
 		return resultNodes;
 	}

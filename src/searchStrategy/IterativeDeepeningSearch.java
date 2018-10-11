@@ -1,32 +1,35 @@
 package searchStrategy;
 
 import genericSearch.Node;
+import genericSearch.State;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.TreeMap;
 
 public class IterativeDeepeningSearch  extends SearchQueue{
 	
-	Stack<Node> stack;
+	Stack<Node> stack = new Stack<Node>();
 	int level = 0;
 	static final int max_level = ((int) 1e9);
 	
 	
 	@Override
-	public boolean isEmpty() {
+	public boolean isEmpty() { //TODO: change code
 		
-		boolean isEmpty = stack.isEmpty();
-		
-		if(isEmpty && level == max_level)
-			return isEmpty;
-		
-		if(isEmpty && level != max_level){
-			level++;
-			initializeQueue(new Node(initial_state, null, null));
+		if(!stack.isEmpty())
 			return false;
-		}
+		if(stack.isEmpty() && level == max_level)
+			return true;
+//		System.out.println(level);
+		++level;
 		
-		return true;
+		ArrayList<Node> nodes = new ArrayList<Node>();
+		visited = new TreeMap<State, Integer>();
+		nodes.add(initial_node);
+		add(nodes);
+		
+		return false;
 		
 	}
 
@@ -39,10 +42,9 @@ public class IterativeDeepeningSearch  extends SearchQueue{
 	@Override
 	public void add(ArrayList<Node> nodes) {
 		for(Node node: nodes){
-			if(node.depth == level)
-				return;
+			
 			Integer pathCost = visited.get(node.state);
-			if(pathCost == null){
+			if(pathCost == null && node.depth <= level){
 				visited.put(node.state, node.pathCost);
 				stack.push(node);
 			}

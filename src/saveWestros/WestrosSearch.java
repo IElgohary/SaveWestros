@@ -2,6 +2,16 @@ package saveWestros;
 
 import java.util.Scanner;
 
+
+import searchStrategy.AstarSearch;
+import searchStrategy.BreadthFirstSearch;
+import searchStrategy.DepthFirstSearch;
+import searchStrategy.GreedyNodeComparator;
+import searchStrategy.GreedySearch;
+import searchStrategy.IterativeDeepeningSearch;
+import searchStrategy.UniformCostSearch;
+
+import genericSearch.Node;
 import genericSearch.Search;
 
 public class WestrosSearch extends Search{
@@ -14,7 +24,14 @@ public class WestrosSearch extends Search{
 		int m = sc.nextInt();
 		
 		SaveWestros problem = new SaveWestros(4,4);
+		Node res = search(problem, new AstarSearch());
+//		System.out.println(res.state);
 //		TODO: Start searching
+		if(res == null)
+			System.out.println("no solt");
+		else
+//			System.out.println(res.state);
+			Node.printPath(res);
 		
 	}
 

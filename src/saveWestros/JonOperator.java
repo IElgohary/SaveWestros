@@ -1,5 +1,7 @@
 package saveWestros;
 
+import java.util.Arrays;
+
 import genericSearch.Node;
 import genericSearch.Operator;
 
@@ -7,7 +9,7 @@ public class JonOperator extends Operator{
 	
 	public int dx, dy;
 	boolean attack, pick;
-	final int maxDragonGlass = 1;
+	final int maxDragonGlass = 10;
 	
 	/**
 	 * @param name name of the action
@@ -40,19 +42,19 @@ public class JonOperator extends Operator{
 // 		If Action is attacking walker, validate that walkers are around
 		if(attack) {
 			int walkersAround = walkersAround(grid,newX, newY);
-			if (walkersAround < 0 || dragonGlass == 0) return null;
-			else if(walkersAround > 0){
+			if (walkersAround <= 0 || dragonGlass == 0) return null;
+			if(walkersAround > 0){
 				dragonGlass--;
 			}
 		}
 //		If Action is Picking DragonGlass, Validate that cell has DragonGlass
 		if(pick) {
+			
 			if(grid[newX][newY] != SaveWestros.JON_ON_DRAGONGLASS || dragonGlass == maxDragonGlass) return null;
 			dragonGlass = maxDragonGlass;
 		}
 //		If move is valid, construct new state
 		WestrosState newState = newState(state, newX, newY, dragonGlass);
-		
 		return new Node(newState, node, this);
 	}
 	
@@ -74,8 +76,11 @@ public class JonOperator extends Operator{
 				if(i == newX && j == newY) {
 					if(grid[i][j] == SaveWestros.EMPTY_CELL) 
 						newGrid[i][j] = SaveWestros.JON_SNOW;
-					if(grid[i][j] == SaveWestros.DRAGONGLASS)
-						newGrid[i][j] = SaveWestros.JON_ON_DRAGONGLASS;
+					else if(grid[i][j] == SaveWestros.DRAGONGLASS)
+							newGrid[i][j] = SaveWestros.JON_ON_DRAGONGLASS;
+						else
+							newGrid[i][j] = grid[i][j];
+					
 				} else if(grid[i][j] == SaveWestros.WHITE_WALKER) {
 					if(attack && attackedWalker(newX,newY, i, j)) {
 						newGrid[i][j] = SaveWestros.EMPTY_CELL;
@@ -86,13 +91,17 @@ public class JonOperator extends Operator{
 				} else if(oldCell.x == i && oldCell.y == j) {
 					if(grid[i][j] == SaveWestros.JON_SNOW)
 						newGrid[i][j] = SaveWestros.EMPTY_CELL;
-					if(grid[i][j] == SaveWestros.JON_ON_DRAGONGLASS)
+					else if(grid[i][j] == SaveWestros.JON_ON_DRAGONGLASS)
 						newGrid[i][j] = SaveWestros.DRAGONGLASS;
+					else
+						newGrid[i][j] = grid[i][j];
 				} else {
 					newGrid[i][j] = grid[i][j];
 				}
+				
 			}
 		}
+		
 		return new WestrosState(newCell, dragonGlass, whiteWalkersLeft, newGrid);
 	}
 
@@ -113,10 +122,11 @@ public class JonOperator extends Operator{
 	 */
 	private int walkersAround(char[][] grid, int x, int y) {
 		int walkers = 0;
-		if(grid[x-1][y] == SaveWestros.WHITE_WALKER) walkers++;
-		if(grid[x+1][y] == SaveWestros.WHITE_WALKER) walkers++;
-		if(grid[x][y+1] == SaveWestros.WHITE_WALKER) walkers++;
-		if(grid[x][y-1] == SaveWestros.WHITE_WALKER) walkers++;
+		if(isValidWhiteWalker(grid, x-1, y) && grid[x-1][y] == SaveWestros.WHITE_WALKER) walkers++;
+		if(isValidWhiteWalker(grid, x+1, y) && grid[x+1][y] == SaveWestros.WHITE_WALKER) walkers++;
+		if(isValidWhiteWalker(grid, x, y+1) && grid[x][y+1] == SaveWestros.WHITE_WALKER) walkers++;
+		if(isValidWhiteWalker(grid, x, y-1) && grid[x][y-1] == SaveWestros.WHITE_WALKER) walkers++;
+
 		return walkers;
 	}
 
@@ -133,6 +143,15 @@ public class JonOperator extends Operator{
 		if(grid[x][y] == SaveWestros.OBSTACLE) return false;
 //		Can't Move to cell with a living Walker
 		if(grid[x][y] == SaveWestros.WHITE_WALKER) return false;
+		return true;
+	}
+	
+	private boolean isValidWhiteWalker(char[][] grid, int x, int y) {
+//		Stay inside the grid
+		if(x < 0 || y < 0 || x >= grid.length || y >= grid[0].length )
+			return false;
+//		Can't move to cells with obstacles
+		if(grid[x][y] == SaveWestros.OBSTACLE) return false;
 		return true;
 	}
 	

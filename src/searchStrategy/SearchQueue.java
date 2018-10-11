@@ -2,17 +2,22 @@ package searchStrategy;
 
 import java.util.ArrayList;
 
+import java.util.TreeMap;
+
 import genericSearch.Node;
+import genericSearch.State;
 
 // a class for the base queueing algorithm 
 public abstract class SearchQueue {
-	
+	TreeMap<State, Integer> visited = new TreeMap<State, Integer>();
+	Node initial_node;
 	/**
 	 * Initialize the queue with a single node
 	 * 
 	 * @param node initial node to add in the queue
 	 */
 	public void initializeQueue(Node node) {
+		initial_node = node;
 		ArrayList<Node> nodes = new ArrayList<Node>();
 		nodes.add(node);
 		add(nodes);

@@ -18,6 +18,15 @@ public class Node{
 		
 	}
 
-	
-
+	public static void printPath(Node node){
+		
+		if(node.parent == null){
+			System.out.println(node.state);	
+			return;
+		}
+		
+		printPath(node.parent);
+		System.out.println(node.operator.name);
+		System.out.println(node.state);	
+	}
 }
