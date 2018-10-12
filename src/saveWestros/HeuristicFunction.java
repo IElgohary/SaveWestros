@@ -15,8 +15,9 @@ public class HeuristicFunction {
 		int n,m;
 		n = state.grid.length;
 		m = state.grid[0].length;
-		return state.whiteWalkersLeft * (n * m + 1);
+		return (int) (Math.floor(state.whiteWalkersLeft / 3.0) * (n * m + 1));
 	}
+	
 	
 	/**
 	 * Calculate the cost according to the cost of 

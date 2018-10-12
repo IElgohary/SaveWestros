@@ -14,7 +14,7 @@ public class AstarNodeComparator implements Comparator<Node> {
 
 	public int compare(Node node1, Node node2) {
 		// TODO Auto-generated method stub
-		return (HeuristicFunction.get_cost(node1) + node1.pathCost) - (HeuristicFunction.get_cost(node2) + node2.pathCost);
+		return (HeuristicFunction.remainingWalkers(node1) + node1.pathCost) - (HeuristicFunction.remainingWalkers(node2) + node2.pathCost);
 	}
 
 	public static <T, U extends Comparable<? super U>> Comparator<T> comparing(
