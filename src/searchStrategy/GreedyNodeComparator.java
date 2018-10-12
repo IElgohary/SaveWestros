@@ -14,7 +14,7 @@ public class GreedyNodeComparator implements Comparator<Node>{
 
 	public int compare(Node node1, Node node2) {
 		// TODO Auto-generated method stub
-		return HeuristicFunction.get_cost(node1) - HeuristicFunction.get_cost(node2);
+		return HeuristicFunction.remainingWalkers(node1) - HeuristicFunction.remainingWalkers(node2);
 	}
 
 	public static <T, U extends Comparable<? super U>> Comparator<T> comparing(
