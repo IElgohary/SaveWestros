@@ -12,9 +12,20 @@ import saveWestros.HeuristicFunction;
 
 public class GreedyNodeComparator implements Comparator<Node>{
 
+	String hn;
+	
+	public GreedyNodeComparator(String func){
+		this.hn = func;
+	}
 	public int compare(Node node1, Node node2) {
 		// TODO Auto-generated method stub
-		return HeuristicFunction.remainingWalkers(node1) - HeuristicFunction.remainingWalkers(node2);
+		
+		switch(hn){
+			case "h1": return HeuristicFunction.remainingWalkers(node1) - HeuristicFunction.remainingWalkers(node2);
+			case "h2": return HeuristicFunction.distanceToFarthestWalker(node1) - HeuristicFunction.distanceToFarthestWalker(node2);
+			case "h3": return HeuristicFunction.distanceAndRemainingWalkers(node1) - HeuristicFunction.distanceAndRemainingWalkers(node2);
+			default: return HeuristicFunction.remainingWalkers(node1) - HeuristicFunction.remainingWalkers(node2);
+		}
 	}
 
 	public static <T, U extends Comparable<? super U>> Comparator<T> comparing(

@@ -19,12 +19,12 @@ public class Search {
 	}
 	
 //	Generic search algorithm
-	public static Node search(Problem problem, SearchQueue queue) {
+	public static Node search(Problem problem, SearchQueue queue, boolean printPath) {
 		queue.initializeQueue(new Node(problem.initialState, null, null));
 		
 		while(!queue.isEmpty()) {
 			Node node = queue.removeFront();
-			if(problem.goal(node.state)) return node;
+			if(problem.goal(node.state)){ if(printPath && node!=null) Node.printPath(node); else System.out.println("No solution found"); return node;}
 			ArrayList<Node> possibleNodes = expand(node, problem.operators);
 			queue.add(possibleNodes);
 		}

@@ -11,10 +11,24 @@ import java.util.function.ToLongFunction;
 import saveWestros.HeuristicFunction;
 
 public class AstarNodeComparator implements Comparator<Node> {
-
+	String hn;
+	public AstarNodeComparator(String func){
+		this.hn = func;
+	}
 	public int compare(Node node1, Node node2) {
 		// TODO Auto-generated method stub
-		return (HeuristicFunction.remainingWalkers(node1) + node1.pathCost) - (HeuristicFunction.remainingWalkers(node2) + node2.pathCost);
+		switch(hn){
+			case "h1": return (HeuristicFunction.remainingWalkers(node1) + node1.pathCost) - (HeuristicFunction.remainingWalkers(node2) + node2.pathCost);
+			
+			case "h2": return (HeuristicFunction.distanceToFarthestWalker(node1)
+					+ node1.pathCost) - (HeuristicFunction.distanceToFarthestWalker(node2) + node2.pathCost);
+			
+			case "h3": return (HeuristicFunction.distanceAndRemainingWalkers(node1) 
+					+ node1.pathCost) - (HeuristicFunction.distanceAndRemainingWalkers(node2) + node2.pathCost);
+			
+			default:  return (HeuristicFunction.remainingWalkers(node1) + node1.pathCost) - (HeuristicFunction.remainingWalkers(node2) + node2.pathCost);
+		}
+		
 	}
 
 	public static <T, U extends Comparable<? super U>> Comparator<T> comparing(

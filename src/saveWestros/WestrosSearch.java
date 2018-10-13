@@ -24,14 +24,7 @@ public class WestrosSearch extends Search{
 		int m = sc.nextInt();
 		
 		SaveWestros problem = new SaveWestros(4,4);
-		Node res = search(problem, new AstarSearch());
-//		System.out.println(res.state);
-//		TODO: Start searching
-		if(res == null)
-			System.out.println("no solt");
-		else
-//			System.out.println(res.state);
-			Node.printPath(res);
+		Node res = search(problem, new AstarSearch("h3"), true);
 		
 	}
 

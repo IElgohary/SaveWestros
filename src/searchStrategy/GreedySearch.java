@@ -2,7 +2,7 @@ package searchStrategy;
 
 public class GreedySearch extends UniformCostSearch{
 	
-	public GreedySearch(){
-		super(new GreedyNodeComparator());
+	public GreedySearch(String func){
+		super(new GreedyNodeComparator(func));
 	}
 }

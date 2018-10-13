@@ -2,7 +2,7 @@ package searchStrategy;
 
 public class AstarSearch extends UniformCostSearch{
 	
-	public AstarSearch(){
-		super(new AstarNodeComparator());
+	public AstarSearch(String func){
+		super(new AstarNodeComparator(func));
 	}
 }
