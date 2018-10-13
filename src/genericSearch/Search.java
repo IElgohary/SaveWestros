@@ -24,7 +24,7 @@ public class Search {
 		
 		while(!queue.isEmpty()) {
 			Node node = queue.removeFront();
-			if(problem.goal(node.state)){ if(printPath && node!=null) Node.printPath(node); else System.out.println("No solution found"); return node;}
+			if(problem.goal(node.state)){ if(printPath) Node.printPath(node); return node;}
 			ArrayList<Node> possibleNodes = expand(node, problem.operators);
 			queue.add(possibleNodes);
 		}

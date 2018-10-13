@@ -23,9 +23,14 @@ public class WestrosSearch extends Search{
 		System.out.println("Enter Height:");
 		int m = sc.nextInt();
 		
-		SaveWestros problem = new SaveWestros(4,4);
-		Node res = search(problem, new AstarSearch("h3"), true);
+		SaveWestros problem = new SaveWestros(n, m);
+		Node res = search(problem, new AstarSearch("h1"), true);
 		
+		if(res == null){
+			System.out.println("No solution was found!");
+			System.out.println("Here is the initial state of the unsolvable grid\n");
+			System.out.println(problem.initialState);
+		}
 	}
 
 }

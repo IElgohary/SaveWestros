@@ -1,5 +1,7 @@
 package saveWestros;
 
+import java.util.Arrays;
+
 import genericSearch.State;
 
 public class WestrosState extends State{
@@ -40,7 +42,7 @@ public class WestrosState extends State{
 		sb.append("Dragon Glass: ").append(dragonGlass).append("\n");
 		sb.append("White Walkers: ").append(whiteWalkersLeft).append("\n");
 		for(char[] row: grid){
-			sb.append(row).append("\n");
+			sb.append(Arrays.toString(row)).append("\n");
 		}
 		return sb.toString();
 	}
