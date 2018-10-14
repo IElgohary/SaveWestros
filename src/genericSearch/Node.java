@@ -7,6 +7,12 @@ public class Node{
 	public int depth;
 	public int pathCost;
 	
+	/**
+	 * Constructs a generic node with the given parameters
+	 * @param state
+	 * @param parent
+	 * @param operator
+	 */
 	public Node(State state, Node parent, Operator operator) {
 		this.state = state;
 		this.parent = parent;
@@ -18,6 +24,11 @@ public class Node{
 		
 	}
 
+	/**
+	 * prints a step by step solution, visualizing the state
+	 * and agent action throughout the grid it is solving.
+	 * @param node the final goal node if one is reached.
+	 */
 	public static void printPath(Node node){
 		
 		if(node.parent == null){

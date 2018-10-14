@@ -36,6 +36,7 @@ public abstract class SearchQueue {
 
 	/**
 	 * @param nodes an array list of nodes to be added to the queue
+	 * if the state resulting has not been previously explored.
 	 */
 	public abstract void add(ArrayList<Node> nodes);
 

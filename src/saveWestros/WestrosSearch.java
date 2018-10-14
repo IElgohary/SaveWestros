@@ -24,7 +24,7 @@ public class WestrosSearch extends Search{
 		int m = sc.nextInt();
 		
 		SaveWestros problem = new SaveWestros(n, m);
-		Node res = search(problem, new AstarSearch("h1"), true);
+		Node res = search(problem, new IterativeDeepeningSearch(), true);
 		
 		if(res == null){
 			System.out.println("No solution was found!");

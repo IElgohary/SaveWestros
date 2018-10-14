@@ -11,10 +11,16 @@ import java.util.function.ToLongFunction;
 import saveWestros.HeuristicFunction;
 
 public class AstarNodeComparator implements Comparator<Node> {
+	
 	String hn;
+	/**
+	 * Constructs an A* node comparator with  one of the predefined cost function. 
+	 * @param func a string that dictates the cost calculating function.
+	 */
 	public AstarNodeComparator(String func){
 		this.hn = func;
 	}
+	
 	public int compare(Node node1, Node node2) {
 		// TODO Auto-generated method stub
 		switch(hn){

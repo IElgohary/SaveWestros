@@ -14,12 +14,14 @@ public class GreedyNodeComparator implements Comparator<Node>{
 
 	String hn;
 	
+	/**
+	 * Constructs a greedy node comparator with  one of the predefined cost function. 
+	 * @param func a string that dictates the cost calculating function.
+	 */
 	public GreedyNodeComparator(String func){
 		this.hn = func;
 	}
 	public int compare(Node node1, Node node2) {
-		// TODO Auto-generated method stub
-		
 		switch(hn){
 			case "h1": return HeuristicFunction.remainingWalkers(node1) - HeuristicFunction.remainingWalkers(node2);
 			case "h2": return HeuristicFunction.distanceToFarthestWalker(node1) - HeuristicFunction.distanceToFarthestWalker(node2);

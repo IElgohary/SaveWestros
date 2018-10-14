@@ -11,7 +11,6 @@ import genericSearch.Node;
 public  class NodeComparator implements Comparator<Node>{
 
 	public int compare(Node node1, Node node2) {
-		// TODO Auto-generated method stub
 		return node1.pathCost - node2.pathCost;
 	}
 

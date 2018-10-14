@@ -18,7 +18,13 @@ public class Search {
 		return resultNodes;
 	}
 	
-//	Generic search algorithm
+	/**
+	 * @param problem
+	 * @param queue
+	 * @param printPath
+	 * Generic search algorithm
+	 * @return
+	 */
 	public static Node search(Problem problem, SearchQueue queue, boolean printPath) {
 		queue.initializeQueue(new Node(problem.initialState, null, null));
 		
