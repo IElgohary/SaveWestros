@@ -19,18 +19,19 @@ public class Search {
 	}
 	
 	/**
-	 * @param problem
-	 * @param queue
-	 * @param printPath
+	 * @param problem an instance of the problem
+	 * @param queue An instance of the queuing strategy
+	 * @param visualize a boolean dictating whether or not the step by step solution should be printed
 	 * Generic search algorithm
-	 * @return
+	 * @return the final node goal node if a goal exists or null
 	 */
-	public static Node search(Problem problem, SearchQueue queue, boolean printPath) {
+	public static Node search(Problem problem, SearchQueue queue, boolean visualize) {
 		queue.initializeQueue(new Node(problem.initialState, null, null));
-		
+		int expanded_state_count = 0;
 		while(!queue.isEmpty()) {
 			Node node = queue.removeFront();
-			if(problem.goal(node.state)){ if(printPath) Node.printPath(node); return node;}
+			expanded_state_count+=1;
+			if(problem.goal(node.state)){ if(visualize){ Node.printPath(node); System.out.println("Number of expanded states: "+expanded_state_count);} return node;}
 			ArrayList<Node> possibleNodes = expand(node, problem.operators);
 			queue.add(possibleNodes);
 		}

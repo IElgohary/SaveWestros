@@ -52,8 +52,10 @@ public class SaveWestros extends Problem{
 	 */
 	private void genGrid() {
 		char[][] newGrid;
-		if(n <= 0 && m <= 0) 
+		if(n <= 0 || m <= 0) {
+			System.out.println("Invalid dimensions a 4*4 matrix will be generated instead");
 			newGrid= new char[4][4];
+		}
 		else
 			newGrid = new char[n][m];
 		
