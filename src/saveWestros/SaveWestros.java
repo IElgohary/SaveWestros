@@ -74,7 +74,7 @@ public class SaveWestros extends Problem{
 				if(newGrid[i][j] == WHITE_WALKER) white_walker_count++;
 			}
 		}
-		int dragonGlass = randomDragonGlass.nextInt(white_walker_count+1);
+		int dragonGlass = 0;
 		
 		this.grid = newGrid;
 		this.initialState = new WestrosState(new Cell(newGrid.length - 1, newGrid[0].length - 1), dragonGlass, white_walker_count, this.grid);

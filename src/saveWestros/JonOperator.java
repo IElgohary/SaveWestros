@@ -111,7 +111,8 @@ public class JonOperator extends Operator{
 	 * @return boolean whether the walker was attacked by Jon 
 	 */
 	private boolean attackedWalker(int x, int y, int i, int j) {
-		if(Math.abs(x-i) <= 1 && Math.abs(y-j) <= 1) return true;
+		if(Math.abs(x-i) == 0 && Math.abs(y-j) == 1 ||
+			Math.abs(x-i) == 1 && Math.abs(y-j) == 0) return true;
 		return false;
 	}
 
@@ -146,6 +147,12 @@ public class JonOperator extends Operator{
 		return true;
 	}
 	
+	/**
+	 * check if a cell is within the grid and is not an obstacle
+	 * @param grid
+	 * @param x,y coordinates of the cell
+	 * @return boolean whether the cell is within the grid and not an obstacle
+	 */
 	private boolean isValidWhiteWalker(char[][] grid, int x, int y) {
 //		Stay inside the grid
 		if(x < 0 || y < 0 || x >= grid.length || y >= grid[0].length )
