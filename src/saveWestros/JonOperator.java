@@ -1,15 +1,16 @@
 package saveWestros;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import genericSearch.Node;
 import genericSearch.Operator;
 
 public class JonOperator extends Operator{
-	
+	Random rnd = new Random();
 	public int dx, dy;
 	boolean attack, pick;
-	final int maxDragonGlass = 10;
+	final int maxDragonGlass = rnd.nextInt(11);
 	
 	/**
 	 * @param name name of the action

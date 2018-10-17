@@ -19,10 +19,8 @@ public class SaveWestros extends Problem{
 	public static char[]grid_elements = {WHITE_WALKER, OBSTACLE, DRAGONGLASS, EMPTY_CELL, EMPTY_CELL, EMPTY_CELL};
 	
 
-	public SaveWestros(int n, int m) {
+	public SaveWestros() {
 		super();
-		this.n = n;
-		this.m = m;
 		
 		genGrid();
 		initializeOperators();
@@ -52,13 +50,16 @@ public class SaveWestros extends Problem{
 	 */
 	private void genGrid() {
 		char[][] newGrid;
-		if(n <= 0 || m <= 0) {
-			System.out.println("Invalid dimensions a 4*4 matrix will be generated instead");
-			newGrid= new char[4][4];
-		}
-		else
-			newGrid = new char[n][m];
+		Random rnd = new Random();
+		n = rnd.nextInt(8);
+		m = rnd.nextInt(8);
 		
+		if(n < 4 || m < 4) {
+			n = 4;
+			m = 4;
+		}
+		newGrid = new char[n][m];
+		System.out.println(n+" "+m);
 		Random randomIndexGenerator = new Random();
 		Random randomDragonGlass = new Random();
 		int white_walker_count = 0;

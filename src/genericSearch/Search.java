@@ -27,11 +27,12 @@ public class Search {
 	 */
 	public static Node search(Problem problem, SearchQueue queue, boolean visualize) {
 		queue.initializeQueue(new Node(problem.initialState, null, null));
-		int expanded_state_count = 0;
+		int expanded_node_count = 0;
 		while(!queue.isEmpty()) {
 			Node node = queue.removeFront();
-			expanded_state_count+=1;
-			if(problem.goal(node.state)){ if(visualize){ Node.printPath(node); System.out.println("Number of expanded states: "+expanded_state_count);} return node;}
+			expanded_node_count+=1;
+			if(problem.goal(node.state)){ if(visualize){ Node.printPath(node); System.out.println("Total cost: "+node.pathCost);
+				System.out.println("Number of expanded states: "+expanded_node_count);} return node;}
 			ArrayList<Node> possibleNodes = expand(node, problem.operators);
 			queue.add(possibleNodes);
 		}

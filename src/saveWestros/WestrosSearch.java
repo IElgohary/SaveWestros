@@ -17,14 +17,9 @@ import genericSearch.Search;
 public class WestrosSearch extends Search{
 	// Start here	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Width:");
-		int n = sc.nextInt();
-		System.out.println("Enter Height:");
-		int m = sc.nextInt();
-		
-		SaveWestros problem = new SaveWestros(n, m);
-		Node res = search(problem, new IterativeDeepeningSearch(), true);
+
+		SaveWestros problem = new SaveWestros();
+		Node res = search(problem, new AstarSearch("h2"), true);
 		
 		if(res == null){
 			System.out.println("No solution was found!");
