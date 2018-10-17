@@ -25,14 +25,24 @@ public class Search {
 	 * Generic search algorithm
 	 * @return the final node goal node if a goal exists or null
 	 */
-	public static Node search(Problem problem, SearchQueue queue, boolean visualize) {
+	public static String[] search(Problem problem, SearchQueue queue, boolean visualize) {
 		queue.initializeQueue(new Node(problem.initialState, null, null));
+		String[] result = new String[3];
 		int expanded_node_count = 0;
 		while(!queue.isEmpty()) {
 			Node node = queue.removeFront();
 			expanded_node_count+=1;
-			if(problem.goal(node.state)){ if(visualize){ Node.printPath(node); System.out.println("Total cost: "+node.pathCost);
-				System.out.println("Number of expanded states: "+expanded_node_count);} return node;}
+			if(problem.goal(node.state)){ 
+				if(visualize){ 
+					Node.printPath(node); 
+					System.out.println("Total cost: "+node.pathCost);
+					System.out.println("Number of expanded states: "+expanded_node_count);
+					} 
+				result[0] = node.getPath(node);
+				result[1] = "" + node.pathCost;
+				result[2] = "" + expanded_node_count;
+				return result;
+				}
 			ArrayList<Node> possibleNodes = expand(node, problem.operators);
 			queue.add(possibleNodes);
 		}

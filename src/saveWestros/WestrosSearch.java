@@ -19,7 +19,7 @@ public class WestrosSearch extends Search{
 	public static void main(String[] args) {
 
 		SaveWestros problem = new SaveWestros();
-		Node res = search(problem, new AstarSearch("h2"), true);
+		String[] res = search(problem, new AstarSearch("h3"), true);
 		
 		if(res == null){
 			System.out.println("No solution was found!");

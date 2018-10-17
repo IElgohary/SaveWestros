@@ -40,4 +40,12 @@ public class Node{
 		System.out.println(node.operator.name);
 		System.out.println(node.state);	
 	}
+
+	public String getPath(Node node) {
+		if(node.parent == null){
+			return "Start";
+		}
+		
+		return getPath(node.parent) + "->" + node.operator.name;
+	}
 }
